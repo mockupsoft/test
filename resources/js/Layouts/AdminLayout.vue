@@ -1,6 +1,11 @@
 <script setup>
 import { Link, router } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { ref, onErrorCaptured } from 'vue';
+
+onErrorCaptured((err) => {
+  console.error('AdminLayout error:', err);
+  return false;
+});
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';

@@ -28,7 +28,11 @@ require __DIR__.'/auth.php';
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard', [
+            'auth' => [
+                'user' => auth()->user()
+            ]
+        ]);
     })->name('admin.dashboard');
     
     Route::get('/test', function () {
